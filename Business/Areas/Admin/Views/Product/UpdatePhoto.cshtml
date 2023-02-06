@@ -1,0 +1,42 @@
+﻿@using Business.Areas.Admin.ViewModels.Product;
+@model ProductPhotoUpdateVM;
+
+@{
+    ViewBag.Title = "Product Dashboard";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <form asp-action="updatephoto" asp-controller="product" method="post">
+                            <input asp-for="@Model.ProductId" type="hidden" />
+                            <span class="section">Photo Update</span>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align" asp-for="@Model.Order"></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" asp-for="@Model.Order" />
+                                    <span class="d-block text-danger" asp-validation-for="@Model.Order"></span>
+                                </div>
+                            </div>
+                            <div class="ln_solid">
+                                <div class="form-group">
+                                    <div class="col-md-6 offset-md-3 mt-2">
+                                        <button type='submit' class="btn btn-primary">Submit</button>
+                                        <a type="button" asp-action="update" asp-controller="product" asp-route-id="@Model.ProductId" class="btn btn-success">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @await Html.PartialAsync("_FormValidationPartial")
+    }

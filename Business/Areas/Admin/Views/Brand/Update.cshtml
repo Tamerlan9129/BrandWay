@@ -1,0 +1,33 @@
+﻿@using Business.Areas.Admin.ViewModels.Brand;
+@model BrandUpdateVM;
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <form asp-action="update" asp-controller="brand" method="post">
+                            <span class="section">Brand Update</span>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align" asp-for="@Model.Title"></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" asp-for="@Model.Title" />
+                                    <span class="d-block text-danger" asp-validation-for="@Model.Title"></span>
+                                </div>
+                            </div>
+                            <div class="ln_solid">
+                                <div class="form-group">
+                                    <div class="col-md-6 offset-md-3 mt-2">
+                                        <button type='submit' class="btn btn-primary">Submit</button>
+                                        <a type="button" asp-action="index" asp-controller="brand" class="btn btn-success">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

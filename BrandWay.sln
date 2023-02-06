@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{19B88545-2896-4F4E-B10A-FB959AED0148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{D97D28A9-17BD-4AD3-919B-5A6FEF70F102}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{48750854-597A-45C7-A70E-F8091AE04E43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19B88545-2896-4F4E-B10A-FB959AED0148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19B88545-2896-4F4E-B10A-FB959AED0148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19B88545-2896-4F4E-B10A-FB959AED0148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19B88545-2896-4F4E-B10A-FB959AED0148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D97D28A9-17BD-4AD3-919B-5A6FEF70F102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D97D28A9-17BD-4AD3-919B-5A6FEF70F102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D97D28A9-17BD-4AD3-919B-5A6FEF70F102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D97D28A9-17BD-4AD3-919B-5A6FEF70F102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48750854-597A-45C7-A70E-F8091AE04E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48750854-597A-45C7-A70E-F8091AE04E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48750854-597A-45C7-A70E-F8091AE04E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48750854-597A-45C7-A70E-F8091AE04E43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F43CB4B5-733D-4E79-A65A-665C94EDA23F}
+	EndGlobalSection
+EndGlobal

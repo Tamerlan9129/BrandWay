@@ -1,0 +1,51 @@
+﻿@using Business.Areas.Admin.ViewModels.Product;
+@model ProductAddSizeVM;
+@{
+    var productId = Context.Request.RouteValues["id"];
+    ViewBag.Title = "Product Dashboard";
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <h2>Add Size</h2>
+                        <form method="post" asp-action="addsize" asp-controller="product" asp-area="admin">
+                            <input type="hidden" asp-for="@Model.ProductId" value="@productId" />
+                            <select multiple class="select" asp-for="SizesIds" asp-items="Model.Sizes"></select>
+                            <span class="d-block text-danger" style="font-size:14px" asp-validation-for="SizesIds"></span>
+                            <div class="form-text text-danger " asp-validation-summary="ModelOnly"></div>
+
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-sm btn-outline-success">Add</button>
+                                <a asp-action="index" asp-controller="product" asp-area="admin" class="btn btn-sm btn-outline-light text-dark">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+
+@section Scripts{
+    @await Html.PartialAsync("_FormValidationPartial")
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script>
+        $('select').selectpicker();
+    </script>
+        }

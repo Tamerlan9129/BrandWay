@@ -1,0 +1,52 @@
+﻿@using Business.Areas.Admin.ViewModels.Color;
+@model ColorIndexVM;
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <a asp-action="create" asp-controller="color" class="btn btn-success">Create</a>
+            <div class="col-md-12 col-sm-12 mt-4 ">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Title</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                foreach (var color in Model.Colors)
+                                                {
+                                                    <tr>
+                                                        <td>@color.Id</td>
+                                                        <td>@color.Title</td>
+                                                        <td>
+                                                            <form asp-action="delete" asp-controller="color" asp-route-id="@color.Id">
+                                                                <a class="btn btn-sm btn-warning" asp-action="update" asp-controller="color" asp-route-id="@color.Id">
+                                                                    Update
+                                                                </a>
+                                                                <button class="btn btn-sm btn-danger">
+                                                                    Delete
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
