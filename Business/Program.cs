@@ -62,6 +62,8 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.AddScoped<IHomeService, HomeService>();
+builder.Services.AddScoped<IFavouriteService, FavouriteService>();
+
 
 
 

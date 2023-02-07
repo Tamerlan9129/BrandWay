@@ -1,7 +1,11 @@
-﻿<div class="axil-wishlist-area axil-section-gap">
+﻿@using Business.ViewModels.Favourite;
+@model List<FavouriteListItemVM>;
+
+
+<div class="axil-wishlist-area axil-section-gap">
     <div class="container">
         <div class="product-table-heading">
-            <h4 class="title">My Wish List on eTrade</h4>
+            <h4 class="title">My Wish List on Brand Way</h4>
         </div>
         <div class="table-responsive">
             <table class="table axil-product-table axil-wishlist-table">
@@ -11,35 +15,23 @@
                         <th scope="col" class="product-thumbnail">Product</th>
                         <th scope="col" class="product-title"></th>
                         <th scope="col" class="product-price">Unit Price</th>
-                        <th scope="col" class="product-stock-status">Stock Status</th>
                         <th scope="col" class="product-add-cart"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="product-remove"><a href="#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                        <td class="product-thumbnail"><a href="single-product.html"><img  src="~/assets/images/product/electric/product-01.png" alt="Digital Product"></a></td>
-                        <td class="product-title"><a href="single-product.html">Wireless PS Handler</a></td>
-                        <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>124.00</td>
-                        <td class="product-stock-status" data-title="Status">In Stock</td>
-                        <td class="product-add-cart"><a href="cart.html" class="axil-btn btn-outline">Add to Cart</a></td>
-                    </tr>
-                    <tr>
-                        <td class="product-remove"><a href="#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                        <td class="product-thumbnail"><a href="single-product-2.html"><img  src="~/assets/images/product/electric/product-02.png" alt="Digital Product"></a></td>
-                        <td class="product-title"><a href="single-product-2.html">Gradient Light Keyboard</a></td>
-                        <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>124.00</td>
-                        <td class="product-stock-status" data-title="Status">In Stock</td>
-                        <td class="product-add-cart"><a href="cart.html" class="axil-btn btn-outline">Add to Cart</a></td>
-                    </tr>
-                    <tr>
-                        <td class="product-remove"><a href="#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                        <td class="product-thumbnail"><a href="single-product-3.html"><img  src="~/assets/images/product/electric/product-03.png" alt="Digital Product"></a></td>
-                        <td class="product-title"><a href="single-product-3.html">HD CC Camera</a></td>
-                        <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>124.00</td>
-                        <td class="product-stock-status" data-title="Status">In Stock</td>
-                        <td class="product-add-cart"><a href="cart.html" class="axil-btn btn-outline">Add to Cart</a></td>
-                    </tr>
+                    @{
+                        foreach (var favourite in Model)
+                        {
+                            <tr class="wish-item" id="@favourite.Id">
+                                <td class="product-remove " ><a href="#" class="remove-wishlist wish-delete" data-id="@favourite.Id"><i class="fal fa-times"></i></a></td>
+                                <td class="product-thumbnail"><a href="single-product.html"><img src="~/assets/images/@favourite.PhotoName" alt="Digital Product"></a></td>
+                                <td class="product-title"><a href="single-product.html">@favourite.Title</a></td>
+                                <td class="product-price" data-title="Price"><span class="currency-symbol">$</span>@favourite.Price</td>
+                                <td class="product-add-cart"><a class="axil-btn btn-outline add-basket-btn" data-id="@favourite.Id">Add to Cart</a></td>
+                            </tr>
+                        }
+                    }
+
                 </tbody>
             </table>
         </div>

@@ -6,5 +6,6 @@
 
         public string SearchInput { get; set; }
         public List<Core.Entities.Product> Products { get; set; }
+        public List<Core.Entities.BasketProduct> BasketProducts { get; set; }
     }
 }

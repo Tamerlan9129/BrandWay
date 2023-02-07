@@ -24,7 +24,8 @@ namespace Business.ViewComponents
             var model = new HeaderComponentVM
             {
                 Count = await _basketProductRepository.GetUserBasketProductsCount(_httpContextAccessor.HttpContext.User),
-                Products = await _productRepository.GetAllAsync()
+                Products = await _productRepository.GetAllAsync(),
+                BasketProducts=await _basketProductRepository.GetAllAsync()
 
             };
             return View(model);

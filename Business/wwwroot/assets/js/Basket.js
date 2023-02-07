@@ -93,7 +93,7 @@ $(document).on("click", '.basket-delete', function () {
     var basketCount = $('#basketCount')
     var basketCurrentCount = $('#basketCount').html()
     var quantity = $(this).data('quantity')
-    var count = $(`#form-${id}`).val()
+    var count = $(`.form-${id}`).val()
     var sum = basketCurrentCount - quantity
     var itemTotalCount = $('#item-count')
     var price = $(this).data('price')
@@ -117,6 +117,7 @@ $(document).on("click", '.basket-delete', function () {
             basketCount.append(sum)
             sumPriceLast.html("")
             sumPriceLast.append(sumPrice - price * count)
+            CheckBasketCount()
         }
     })
 })
@@ -128,13 +129,11 @@ $(document).on("click", '.decrease', function () {
     var basketCount = $('#basketCount')
     var basketCurrentCount = $('#basketCount').html()
     var price = $(this).data('price')
-    var itemTotalCount = $('#item-count')
     var total = $(`#total-price-${id}`)
-    var count = $(`#form-${id}`).val()
+    var count = $(`.form-${id}`).val()
     var sumPrice = $('#sum-price').html()
     var sumPriceLast = $('#sum-price')
     var sum = count * price
-
     sumPrice = parseFloat(sumPrice)
     $(".loader-2").show();
     $(".card-container").css("filter", "blur(1px)")
@@ -148,16 +147,11 @@ $(document).on("click", '.decrease', function () {
             basketCurrentCount--;
             if (basketCurrentCount >= 1) {
                 basketCount.html("")
-                itemTotalCount.html("")
-                itemTotalCount.append(basketCurrentCount + " items")
                 basketCount.append(basketCurrentCount)
             }
-            if (sum > 0) {
-                total.html('')
-                total.append(sum + "$")
-                sumPriceLast.html("")
-                sumPriceLast.append(sumPrice - price)
-            }
+            sumPriceLast.html("")
+            sumPriceLast.append(sumPrice - price)
+
         }
     })
 })
@@ -170,7 +164,7 @@ $(document).on("click", '.increase', function () {
     price = parseInt(price)
     var itemTotalCount = $('#item-count')
     var total = $(`#total-price-${id}`)
-    var count = $(`#form-${id}`).val()
+    var count = $(`.form-${id}`).val()
     var sum = count * price
     var basketCurrentCount = $('#basketCount').html()
     var sumPrice = $('#sum-price').html()

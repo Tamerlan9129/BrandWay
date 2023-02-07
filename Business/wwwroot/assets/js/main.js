@@ -215,12 +215,12 @@
         },
 
         quantityRanger: function() {
-            $('.pro-qty').prepend('<span class="dec qtybtn">-</span>');
-            $('.pro-qty').append('<span class="inc qtybtn">+</span>');
+            $('.decrease').prepend('<span  class="dec ">-</span>');
+            $('.increase').append('<span class="inc ">+</span>');
             $('.qtybtn').on('click', function() {
                 var $button = $(this);
                 var oldValue = $button.parent().find('input').val();
-                if ($button.hasClass('inc')) {
+                if ($button.hasClass('increase')) {
                     var newVal = parseFloat(oldValue) + 1;
                 } else {
                     // Don't allow decrementing below zero

@@ -118,3 +118,67 @@
     </div>
     <!-- End Mainmenu Area  -->
 </header>
+
+<div class="cart-dropdown" id="cart-dropdown">
+    <div class="cart-content-wrap">
+        <div class="cart-header">
+            <h2 class="header-title">Cart review</h2>
+            <button class="cart-close sidebar-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body">
+            <ul class="cart-item-list">
+                @{
+                    if (Model.BasketProducts != null)
+                    {
+                        double totalSum = 0;
+                        foreach (var product in Model.BasketProducts)
+                        {
+                            var sum = product.Product.Price * product.Quantity;
+                            totalSum += sum;
+                            <li class="cart-item basket-products" id="@product.ProductId">
+                                <div class="item-img">
+                                    <a href="single-product.html"><img src="~/assets/images/@product.Product.MainPhoto"></a>
+                                    <button data-id="@product.ProductId" class="close-btn basket-delete"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="item-content">
+                                    <div class="product-rating">
+                                        <span class="icon">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                        <span class="rating-number">(64)</span>
+                                    </div>
+                                    <h3 class="item-title"><a href="single-product-3.html">@product.Product.Title</a></h3>
+                                    <div class="item-price"><span class="currency-symbol">$</span>@product.Product.Price</div>
+                                    <div class="pro-qty item-quantity">
+                                        <div data-id="@product.ProductId" data-price="@product.Product.Price" class="decrease qtybtn"></div>
+                                        <input type="number" class="quantity-input form-@product.Id" value="@product.Quantity">
+                                        <div class="increase qtybtn" data-id="@product.ProductId" data-price="@product.Product.Price"> </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                        <div class="cart-footer">
+                            <h3 class="cart-subtotal">
+                                <span class="subtotal-title">Subtotal:</span>
+                                <span class="subtotal-amount">$<span id="sum-price">@totalSum</span></span>
+                            </h3>
+                            <div class="group-btn">
+                                <a asp-action="index" asp-controller="basket" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
+                                <a href="checkout.html" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
+                            </div>
+                        </div>
+                    }
+                }
+            </ul>
+        </div>
+
+
+
+
+
+    </div>
+</div>
