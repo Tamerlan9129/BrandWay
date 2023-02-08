@@ -1,0 +1,74 @@
+﻿@using Business.Areas.Admin.ViewModels.Testimonial;
+@model TestimonialIndexVM;
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="row">
+            <a asp-action="create" asp-controller="testimonial" class="btn btn-success">Create</a>
+            <div class="col-md-12 col-sm-12 mt-4 ">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>FullName</th>
+                                                <th>Description</th>
+                                                <th>Photo</th>
+                                                <th>Create date</th>
+                                                <th>Update date</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                foreach (var testimonial in Model.Testimonials)
+                                                {
+                                                    <tr>
+                                                        <td>@testimonial.Id</td>
+                                                        <td>@testimonial.Title</td>
+                                                        <td>@Html.Raw(testimonial.Description)</td>
+                                                        <td><img style="width:150px;height:150px;object-fit:cover;border-radius:50%;" class="img img-thumbnail" src="/assets/images/@testimonial.PhotoName" /></td>
+                                                        <td>@testimonial.CreatedAt</td>
+                                                        <td>
+                                                            @{
+                                                                if (testimonial.ModifiedAt.ToString() == "01.01.0001 00:00:00")
+                                                                {
+                                                                    <p>Non Modified</p>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @testimonial.ModifiedAt
+                                                                }
+                                                            }
+                                                        </td>
+                                                        <td style="width:240px">
+                                                            <div class="btn-group ml-auto">
+                                                                <form asp-action="delete" asp-controller="testimonial" asp-area="admin" asp-route-id="@testimonial.Id" style="display:flex;flex-wrap: wrap;gap: 5px;text-align:center;align-items:center;justify-content: center;">
+                                                                    <div>
+                                                                        <a asp-action="update" asp-controller="testimonial" asp-area="admin" asp-route-id="@testimonial.Id" class="btn btn-sm btn-light">Edit</a>
+                                                                        <button type="submit" class="btn btn-sm btn-outline-danger ">
+                                                                            <i class="far fa-trash-alt"></i>
+                                                                        </button>
+                                                                    </div>
+
+                                                                </form>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

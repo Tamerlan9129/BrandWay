@@ -52,6 +52,12 @@ builder.Services.AddScoped<IProductColorRepository, ProductColorRepository>();
 builder.Services.AddScoped<ISizeRepository, SizeRepository>();
 builder.Services.AddScoped<IProductSizeRepository, ProductSizeRepository>();
 builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+builder.Services.AddScoped<IHomeMainSliderRepository, HomeMainSliderRepository>();
+builder.Services.AddScoped<IOurServiceRepository, OurServiceRepository>();
+builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+
+
+
 
 
 #endregion
@@ -63,6 +69,9 @@ builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<IFavouriteService, FavouriteService>();
+builder.Services.AddScoped<IShopService, ShopService>();
+
+
 
 
 
@@ -75,6 +84,11 @@ builder.Services.AddScoped<AdminAsbtractService.IBrandService, AdminConcreteServ
 builder.Services.AddScoped<AdminAsbtractService.IBrandService, AdminConcreteService.BrandService>();
 builder.Services.AddScoped<AdminAsbtractService.ISizeService, AdminConcreteService.SizeService>();
 builder.Services.AddScoped<AdminAsbtractService.IColorService, AdminConcreteService.ColorService>();
+builder.Services.AddScoped<AdminAsbtractService.IHomeMainSliderService, AdminConcreteService.HomeMainSliderService>();
+builder.Services.AddScoped<AdminAsbtractService.IOurServiceService, AdminConcreteService.OurServiceService>();
+builder.Services.AddScoped<AdminAsbtractService.ITestimonialService, AdminConcreteService.TestimonialService>();
+
+
 
 
 
