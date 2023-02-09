@@ -37,7 +37,7 @@ namespace Business.Controllers
         public async Task<IActionResult> FilterByName(string? name)
         {
             var model = await _shopService.FilterAllByName(name);
-            return PartialView("_SearchProductPartial", model);
+            return PartialView("_SearchProductsPartial", model);
         }
     }
 }

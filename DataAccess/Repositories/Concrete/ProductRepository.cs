@@ -92,7 +92,6 @@ namespace DataAccess.Repositories.Concrete
             var products = await _context.Products
                 .OrderByDescending(p => p.CreatedAt)
                 .Include(pr => pr.Brand)
-                .Where(pr => pr.BestSelling)
                 .Skip(5)
                 .Take(5)
                 .ToListAsync();

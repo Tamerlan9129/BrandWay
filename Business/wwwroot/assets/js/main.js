@@ -996,7 +996,7 @@
     $(document).on("click", '#btn-load-more', function () {
         $.ajax({
             method: "GET",
-            url: "/shop/LoadMore",
+            url: "https://localhost:44338/shop/LoadMore",
             data: {
                 skipRow: skipRow
             },
@@ -1010,3 +1010,28 @@
 
 
 })(window, document, jQuery);
+
+$(document).ready(function () {
+    $("#search2").keypress(function () {
+        var addResult = $("#header-search-modal")
+        var name = $("#search2").val()
+        $.ajax({
+            method: "GET",
+            url: "https://localhost:44338/shop/filterbyname",
+            data: {
+                name: name
+            },
+            success: function (result) {
+                addResult.html('')
+                addResult.append(result)
+                if (result == false) {
+                    addResult.css("height", "100px")
+                    addResult.append(`
+                  <div class="no-result">
+                     <span>No results</span>
+                  </div>`)
+                }
+            }
+        })
+    });
+});

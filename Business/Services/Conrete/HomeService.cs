@@ -8,12 +8,17 @@ namespace Business.Services.Conrete
     {
         private readonly IBrandRepository _brandRepository;
         private readonly IProductRepository _productRepository;
-
+        private readonly ITestimonialRepository _testimonialRepository;
+        private readonly IHomeMainSliderRepository _homeMainSliderRepository;
 
         public HomeService(IBrandRepository brandRepository,
-            IProductRepository productRepository)
+            IProductRepository productRepository,
+            ITestimonialRepository testimonialRepository,
+            IHomeMainSliderRepository homeMainSliderRepository)
         {
             _productRepository = productRepository;
+            _testimonialRepository = testimonialRepository;
+            _homeMainSliderRepository = homeMainSliderRepository;
             _brandRepository = brandRepository;
         }
         public async Task<HomeIndexVM> GetAllAsync()
@@ -22,7 +27,9 @@ namespace Business.Services.Conrete
             {
                 Brands = await _brandRepository.GetAllAsync(),
                 BestSellingProducts = await _productRepository.GetProductsBestSellingAsync(),
-                Products = await _productRepository.GetAllAsync()
+                Products = await _productRepository.GetAllAsync(),
+                Testimonials = await _testimonialRepository.GetAllAsync(),
+                HomeMainSliders = await _homeMainSliderRepository.GetAllAsync()
             };
             return model;
         }

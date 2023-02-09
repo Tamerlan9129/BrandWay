@@ -1,0 +1,24 @@
+﻿@using Core.Entities;
+@model List<OurService>;
+
+
+<div class="service-area">
+    <div class="container">
+        <div class="row row-cols-xl-5 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20">
+            @{
+                foreach (var ourService in Model)
+                {
+                    <div class="col">
+                        <div class="service-box">
+                            <div class="icon">
+                                <img src="~/assets/images/@ourService.Icon" alt="Service">
+                            </div>
+                            <h6 class="title">@ourService.Title</h6>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>

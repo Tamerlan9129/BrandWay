@@ -23,15 +23,14 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="small-thumb-wrapper product-small-thumb-2 small-thumb-style-two small-thumb-style-three">
-                               @{
-                                   foreach (var photo in Model.Product.Photos)
-                                   {
+                                @{
+                                    foreach (var photo in Model.Product.Photos)
+                                    {
                                         <div class="small-thumb-img ">
-                                            <img src="~/assets/images/@photo.Name" alt="samll-thumb">
+                                            <img style="border-radius:10px;" src="~/assets/images/@photo.Name" alt="samll-thumb">
                                         </div>
                                     }
-                               }
-                              
+                                }
                             </div>
                         </div>
                     </div>
@@ -39,8 +38,8 @@
                 <div class="col-lg-6 mb--40">
                     <div class="single-product-content">
                         <div class="inner">
-                            <h2 class="product-title">Miles Weekender Bag</h2>
-                            <span class="price-amount">$155.00 - $255.00</span>
+                            <h2 class="product-title">@Model.Product.Title</h2>
+                            <span class="price-amount">$@Model.Product.Price</span>
                             <div class="product-rating">
                                 <div class="star-rating">
                                     <i class="fas fa-star"></i>
@@ -53,12 +52,7 @@
                                     <a href="#">(<span>2</span> customer reviews)</a>
                                 </div>
                             </div>
-                            <ul class="product-meta">
-                                <li><i class="fal fa-check"></i>In stock</li>
-                                <li><i class="fal fa-check"></i>Free delivery available</li>
-                                <li><i class="fal fa-check"></i>Sales 30% Off Use Code: MOTIVE30</li>
-                            </ul>
-                            <p class="description">In ornare lorem ut est dapibus, ut tincidunt nisi pretium. Integer ante est, hendrerit in rutrum quis, elementum eget magna. Pellentesque sagittis dictum libero, eu dignissim tellus.</p>
+
 
                             <div class="product-variations-wrapper">
 
@@ -67,15 +61,16 @@
                                     <h6 class="title">Colors:</h6>
                                     <div class="color-variant-wrapper">
                                         <ul class="color-variant mt--0">
-                                            <li class="color-extra-01 active">
-                                                <span><span class="color"></span></span>
-                                            </li>
-                                            <li class="color-extra-02">
-                                                <span><span class="color"></span></span>
-                                            </li>
-                                            <li class="color-extra-03">
-                                                <span><span class="color"></span></span>
-                                            </li>
+                                            @{
+                                                foreach (var color in Model.Product.Colors)
+                                                {
+                                                    <li class="color-extra-02">
+                                                        <span><span class="color  bg-@color.Color.Title"></span></span>
+                                                    </li>
+
+                                                }
+                                            }
+
                                         </ul>
                                     </div>
                                 </div>
@@ -84,44 +79,29 @@
                                 <div class="product-variation product-size-variation">
                                     <h6 class="title">Size:</h6>
                                     <ul class="range-variant">
-                                        <li>xs</li>
-                                        <li>s</li>
-                                        <li>m</li>
-                                        <li>l</li>
-                                        <li>xl</li>
+                                        @{
+                                            foreach (var size in Model.Product.Sizes)
+                                            {
+                                                <li>@size.Size.Title</li>
+
+                                            }
+                                        }
                                     </ul>
                                 </div>
-                                <!-- End Product Variation  -->
 
                             </div>
 
-                            <!-- Start Product Action Wrapper  -->
                             <div class="product-action-wrapper d-flex-center">
-                                <!-- Start Quentity Action  -->
-                                <div class="pro-qty mr--20"><input type="text" value="1"></div>
-                                <!-- End Quentity Action  -->
-                                <!-- Start Product Action  -->
                                 <ul class="product-action d-flex-center mb--0">
-                                    <li class="add-to-cart"><a href="cart.html" class="axil-btn btn-bg-primary">Add to Cart</a></li>
-                                    <li class="wishlist"><a href="wishlist.html" class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a></li>
+                                    <li class="add-to-cart"><a class="axil-btn btn-bg-primary add-basket-btn " data-id="@Model.Product.Id">Add to Cart</a></li>
+                                    <li class="wishlist"><a class="axil-btn wishlist-btn product-heart" data-id="@Model.Product.Id"><i class="far fa-heart"></i></a></li>
                                 </ul>
-                                <!-- End Product Action  -->
-
                             </div>
-                            <!-- End Product Action Wrapper  -->
 
                             <div class="product-desc-wrapper pt--80 pt_sm--60">
-                                <h4 class="primary-color mb--40 desc-heading">Description</h4>
                                 <div class="single-desc mb--30">
                                     <h5 class="title">Specifications:</h5>
-                                    <p>
-                                        We’ve created a full-stack structure for our working workflow processes, were from the funny the century initial all the made, have spare to negatives. But the structure was from the funny the century rather,
-                                        initial all the made, have spare to negatives.
-                                    </p>
-                                </div>
-                                <div class="single-desc mb--5">
-                                    <h5 class="title">Care & Maintenance:</h5>
-                                    <p>Use warm water to describe us as a product team that creates amazing UI/UX experiences, by crafting top-notch user experience.</p>
+                                    @Html.Raw(Model.Product.Description)
                                 </div>
                                 <ul class="pro-des-features pro-desc-style-two pt-10">
                                     <li class="single-features">

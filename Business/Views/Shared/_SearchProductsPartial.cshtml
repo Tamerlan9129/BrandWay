@@ -1,0 +1,45 @@
+﻿@using Business.ViewModels.Components;
+@model HeaderComponentVM;
+<div class="header-search-wrap">
+    <div class="card-body">
+        <div class="search-result-header">
+            <a asp-action="index" asp-controller="shop" class="view-all">View All</a>
+        </div>
+        <div class="psearch-results">
+            @{
+                foreach (var product in Model.Products)
+                {
+                    <div class="axil-product-list">
+                        <div class="thumbnail">
+                            <a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">
+                                <img style="width:120px;height:170px;object-fit:cover" src="~/assets/images/@product.MainPhoto">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-rating">
+                                <span class="rating-icon">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fal fa-star"></i>
+                                </span>
+                                <span class="rating-number"><span>100+</span> Reviews</span>
+                            </div>
+                            <h6 class="product-title"><a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">@product.Title</a></h6>
+                            <div class="product-price-variant">
+                                <span class="price current-price">$@product.Price</span>
+
+                            </div>
+                            <div class="product-cart">
+                                <a class="cart-btn add-basket-btn" data-id="@product.Id" onclick="AddToBasket(@product.Id)"><i class="fal fa-shopping-cart"></i></a>
+                                <a class="cart-btn product-heart" data-id="@product.Id"><i class="fal fa-heart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+        </div>
+    </div>
+</div>
