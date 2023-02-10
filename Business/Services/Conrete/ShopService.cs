@@ -34,14 +34,10 @@ namespace Business.Services.Conrete
         {
             var queryString = _httpContextAccessor.HttpContext.Request.Query;
             string gender = queryString["genderCheck"];
-            string checkModel = queryString["modelCheck"];
-            string checkMaterial = queryString["materialCheck"];
             string brendCheck = queryString["brendCheck"];
             string colorCheck = queryString["checkColor"];
 
             if (gender != null) model.Gender = gender;
-            if (checkModel != null) model.Model = checkModel;
-            if (checkMaterial != null) model.Material = checkMaterial;
             if (brendCheck != null) model.BrandId = int.Parse(brendCheck);
             if (colorCheck != null) model.ColorId = int.Parse(colorCheck);
 

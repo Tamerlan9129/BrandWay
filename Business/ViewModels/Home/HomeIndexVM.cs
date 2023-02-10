@@ -9,6 +9,7 @@ namespace Business.ViewModels.Home
         public List<Core.Entities.Product> Products { get; set; }
         public List<Core.Entities.Testimonial> Testimonials { get; set; }
         public List<Core.Entities.HomeMainSlider> HomeMainSliders { get; set; }
+        public List<Core.Entities.Product> ExploreProducts { get; set; }
 
 
     }

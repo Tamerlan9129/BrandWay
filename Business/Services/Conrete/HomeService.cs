@@ -29,7 +29,9 @@ namespace Business.Services.Conrete
                 BestSellingProducts = await _productRepository.GetProductsBestSellingAsync(),
                 Products = await _productRepository.GetAllAsync(),
                 Testimonials = await _testimonialRepository.GetAllAsync(),
-                HomeMainSliders = await _homeMainSliderRepository.GetAllAsync()
+                HomeMainSliders = await _homeMainSliderRepository.GetAllAsync(),
+                ExploreProducts=await _productRepository.GetProductsExploreSellingAsync()
+               
             };
             return model;
         }

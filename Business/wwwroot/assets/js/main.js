@@ -1034,4 +1034,12 @@ $(document).ready(function () {
             }
         })
     });
+
+
+
+    $("#resetfilter").click(function () {
+        document.getElementById("filter-products").reset()
+        location.href ="https://localhost:44338/shop"
+    })
+
 });

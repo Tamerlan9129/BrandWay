@@ -28,9 +28,12 @@ namespace DataAccess.Contexts
         public DbSet<HomeMainSlider> HomeMainSlider { get; set; }
         public DbSet<OurService> OurServices { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
-
-
-
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<AboutStore> AboutStore { get; set; }
+        public DbSet<Info> Infos { get; set; }
+        public DbSet<Features> Features { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Location> Locations { get; set; }
 
 
 

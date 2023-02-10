@@ -12,6 +12,8 @@ namespace DataAccess.Repositories.Abstract
         Task<List<Product>> GetAllWithBrandAsync();
         Task<Product> GetProductDetailsAsync(int id);
         Task<List<Product>> GetProductsBestSellingAsync();
+        Task<List<Product>> GetProductsExploreSellingAsync();
+
         Task<IQueryable<Product>> PaginateProductAsync(IQueryable<Product> products, int page, int take);
         Task<int> GetPageCountAsync(IQueryable<Product> products, int take);
         Task<IQueryable<Product>> FilterByName(string? name);

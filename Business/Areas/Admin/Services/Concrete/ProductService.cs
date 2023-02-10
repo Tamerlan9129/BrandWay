@@ -193,6 +193,7 @@ namespace Business.Areas.Admin.Services.Concrete
             product.Price = model.Price;
             product.Description = model.Description;
             product.Title = model.Title;
+            product.BrandId = model.BrandId;
 
             var maxSize = 5500;
             if (model.MainPhoto != null)

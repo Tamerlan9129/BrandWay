@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using AdminConcreteService = Business.Areas.Admin.Services.Concrete;
 using AdminAsbtractService = Business.Areas.Admin.Services.Asbract;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -55,6 +56,18 @@ builder.Services.AddScoped<IBrandRepository, BrandRepository>();
 builder.Services.AddScoped<IHomeMainSliderRepository, HomeMainSliderRepository>();
 builder.Services.AddScoped<IOurServiceRepository, OurServiceRepository>();
 builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+builder.Services.AddScoped<ITeamRepository, TeamRepository>();
+builder.Services.AddScoped<IAboutStoreRepository, AboutStoreRepository>();
+builder.Services.AddScoped<IInfoRepository, InfoRepository>();
+builder.Services.AddScoped<IFeaturesRepository, FeaturesRepository>();
+builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+
+
+
+
+
+
 
 
 
@@ -70,6 +83,10 @@ builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<IFavouriteService, FavouriteService>();
 builder.Services.AddScoped<IShopService, ShopService>();
+builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IContactService, ContactService>();
+
+
 
 
 
@@ -87,6 +104,16 @@ builder.Services.AddScoped<AdminAsbtractService.IColorService, AdminConcreteServ
 builder.Services.AddScoped<AdminAsbtractService.IHomeMainSliderService, AdminConcreteService.HomeMainSliderService>();
 builder.Services.AddScoped<AdminAsbtractService.IOurServiceService, AdminConcreteService.OurServiceService>();
 builder.Services.AddScoped<AdminAsbtractService.ITestimonialService, AdminConcreteService.TestimonialService>();
+builder.Services.AddScoped<AdminAsbtractService.ITeamService, AdminConcreteService.TeamService>();
+builder.Services.AddScoped<AdminAsbtractService.IAboutStoreService, AdminConcreteService.AboutStoreService>();
+builder.Services.AddScoped<AdminAsbtractService.IInfoService, AdminConcreteService.InfoService>();
+builder.Services.AddScoped<AdminAsbtractService.IFeaturesService, AdminConcreteService.FeaturesService>();
+builder.Services.AddScoped<AdminAsbtractService.IContactService, AdminConcreteService.ContactService>();
+builder.Services.AddScoped<AdminAsbtractService.ILocationService, AdminConcreteService.LocationService>();
+
+
+
+
 
 
 

@@ -1,0 +1,36 @@
+﻿@using Business.Areas.Admin.ViewModels.Location;
+@model LocationUpdateVM;
+
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h1>Location </h1>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <form asp-action="update" asp-controller="location" method="post">
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align" asp-for="@Model.Url"></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" asp-for="@Model.Url" />
+                                    <span class="d-block text-danger" asp-validation-for="@Model.Url"></span>
+                                </div>
+                            </div>
+
+                            <div class="ln_solid">
+                                <div class="form-group">
+                                    <div class="col-md-6 offset-md-3 mt-2">
+                                        <button type='submit' class="btn btn-primary">Submit</button>
+                                        <a type="button" asp-action="index" asp-controller="location" class="btn btn-success">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

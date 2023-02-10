@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Services.Abstract;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Business.Controllers
 {
     public class AboutController : Controller
     {
-        public IActionResult Index()
+        private readonly IAboutService _aboutService;
+
+        public AboutController(IAboutService aboutService)
         {
-            return View();
+            _aboutService = aboutService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var model = await _aboutService.GetAllAsync();
+            return View(model);
         }
     }
 }

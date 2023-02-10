@@ -359,7 +359,7 @@ a.content__text-link[data-fx="14"]:hover::after {
 
 .bg-red {
     background: red !important;
-    border-color:red !important;
+    border-color: red !important;
 }
 
 .bg-black {
@@ -387,4 +387,19 @@ a.content__text-link[data-fx="14"]:hover::after {
     background: purple !important;
 }
 
+input[type=radio]:checked + .color-label{
+    position:relative;
+}
 
+input[type=radio]:checked + .color-label::after {
+    position: absolute;
+    content: "";
+    width: 38px;
+    height: 38px;
+    border:2px dashed;
+    color: red;
+    z-index: 99;
+    top: -4px;
+    left: -4px;
+    border-radius: 50%;
+}

@@ -2,7 +2,13 @@
 @using Core.Constants
 @model ProductIndexVM;
 
+@{
+    var gender = Context.Request.Query["genderCheck"];
+    var brendCheck = Context.Request.Query["brendCheck"];
+    var rangePrice = Context.Request.Query["rangePrice"];
+    var checkColor = Context.Request.Query["checkColor"];
 
+}
 
 
 <!-- Start Shop Area  -->
@@ -14,151 +20,184 @@
                     <div class="d-lg-none">
                         <button class="sidebar-close filter-close-btn"><i class="fas fa-times"></i></button>
                     </div>
-                    <div class="toggle-list product-categories active">
-                        <h6 class="title">BRANDS</h6>
-                        <div class="shop-submenu">
-                            <ul>
-                                <li>
-                                    <input style="height:15px" type="radio" id="brand-all" value="" checked name="brandCheck" />
-                                    <label for="brand-all">All</label>
-                                </li>
-                                @foreach (var brand in Model.Brands)
-                                {
-                                    <li>
-                                        <input style="height:15px" type="radio" id="brand-@brand.Id" value="@brand.Title" name="brandCheck" />
-                                        <label for="brand-@brand.Id">@brand.Title</label>
-                                    </li>
-                                }
+                    <form id="filter-products" method="get" asp-action="index" asp-controller="shop" class="mt--25">
 
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="toggle-list product-categories product-gender active">
-                        <h6 class="title">GENDER</h6>
-                        <div class="shop-submenu">
-                            <ul>
-                                <li>
-                                    <input checked type="radio" id="gender-all" name="genderCheck" />
-                                    <label for="gender-all">All</label>
-                                </li>
-                                @{
-                                    foreach (var gender in Enum.GetValues(typeof(Gender)))
+                        <div class="toggle-list product-categories active">
+                            <h6 class="title">BRANDS</h6>
+                            <div class="shop-submenu ">
+                                <div class="d-flex align-left flex-column " style="align-items: flex-start;">
+                                    <div class="d-flex  align-items-center gap-3">
+                                        <input style="height:15px" type="radio" id="brand-all" value="0" checked name="brendCheck" />
+                                        <label for="brand-all">All</label>
+                                    </div>
+                                    @foreach (var brand in Model.Brands)
                                     {
-                                            <li>
-                                                <input type="radio" id="@gender" name="genderCheck" />
-                                                <label for="@gender">@gender.ToString()</label>
-                                            </li>
+                                        if (brendCheck.ToString() == brand.Id.ToString())
+                                        {
+                                            <div class="d-flex align-items-center gap-3">
+                                                <input checked style="height:15px" type="radio" id="brand-@brand.Id" value="@brand.Id" name="brendCheck" />
+                                                <label for="brand-@brand.Id">@brand.Title</label>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="d-flex align-items-center gap-3">
+                                                <input style="height:15px" type="radio" id="brand-@brand.Id" value="@brand.Id" name="brendCheck" />
+                                                <label for="brand-@brand.Id">@brand.Title</label>
+                                            </div>
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="toggle-list product-categories product-gender active">
+                            <h6 class="title">GENDER</h6>
+                            <div class="shop-submenu">
+                                <div class="d-flex align-left flex-column " style="align-items: flex-start;">
+                                    <div class="d-flex  align-items-center gap-3">
+                                        <input checked type="radio" id="gender-all" value="" name="genderCheck" />
+                                        <label for="gender-all">All</label>
+                                    </div>
+                                    @{
+                                        foreach (var genders in Enum.GetValues(typeof(Gender)))
+                                        {
+                                            if (genders.ToString() == gender.ToString())
+                                            {
+                                                <div class="d-flex  align-items-center gap-3">
+                                                    <input checked type="radio" id="@genders" name="genderCheck" value="@genders" />
+                                                    <label for="@genders">@genders.ToString()</label>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="d-flex  align-items-center gap-3">
+                                                    <input type="radio" id="@genders" name="genderCheck" value="@genders" />
+                                                    <label for="@genders">@genders.ToString()</label>
+                                                </div>
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="toggle-list product-color active">
+                            <h6 class="title">COLORS</h6>
+                            <div class="shop-submenu d-flex gap-3">
+                                @{
+                                    foreach (var color in Model.Colors)
+                                    {
+                                        if (checkColor.ToString() == color.Id.ToString())
+                                        {
+                                            <div>
+                                                <input checked name="checkColor" id="color-@color.Id" value="@color.Id" type="radio" class="bg-@color.Title d-none" />
+                                                <label style="width:30px;height:30px;border-radius:50%;" class="color-label bg-@color.Title" for="color-@color.Id"></label>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                <input name="checkColor" id="color-@color.Id" type="radio" value="@color.Id" class="bg-@color.Title d-none" />
+                                                <label style="width:30px;height:30px;border-radius:50%;" class="color-label bg-@color.Title" for="color-@color.Id"></label>
+                                            </div>
+                                        }
                                     }
                                 }
-                            </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="toggle-list product-color active">
-                        <h6 class="title">COLORS</h6>
-                        <div class="shop-submenu d-flex flex-column">
-                            @{
-                                foreach (var color in Model.Colors)
-                                {
-                                        <div>
-                                            <input name="colorCheck" id="color-@color.Id" type="radio" class="bg-@color.Title" />
-                                            <label style="width:30px;height:30px;border-radius:50%;" class="bg-@color.Title" for="color-@color.Id"></label>
-                                        </div>
-                                }
-                            }
-                        </div>
-                    </div>
 
-                    <div class="toggle-list product-size active">
-                        <h6 class="title">SIZE</h6>
-                        <div class="shop-submenu">
-                            <ul>
-                                <li class="chosen"><a href="#">XS</a></li>
-                                <li><a href="#">S</a></li>
-                                <li><a href="#">M</a></li>
-                                <li><a href="#">L</a></li>
-                                <li><a href="#">XL</a></li>
-                                <li><a href="#">XXL</a></li>
-                                <li><a href="#">3XL</a></li>
-                                <li><a href="#">4XL</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="toggle-list product-price-range active">
-                        <h6 class="title">PRICE</h6>
-                        <div class="shop-submenu">
-                            <ul>
-                                <li class="chosen"><a href="#">30</a></li>
-                                <li><a href="#">5000</a></li>
-                            </ul>
-                            <form action="#" class="mt--25">
-                                <div id="slider-range"></div>
-                                <div class="flex-center mt--20">
-                                    <span class="input-range">Price: </span>
-                                    <input type="text" id="amount" class="amount-range" readonly>
+                        <div class="toggle-list product-price-range active">
+                            <h6 class="title">PRICE</h6>
+                            <div class="shop-submenu ">
+                                <div class="mt-3 mb-3">
+                                    <label asp-for="@Model.MinPrice"></label>
+                                    <input style="border:1px solid gray;width:50%;height:40px" asp-for="@Model.MinPrice">
                                 </div>
-                            </form>
+
+                                <label asp-for="@Model.MaxPrice"></label>
+                                <input style="border:1px solid gray;width:50%;height:40px" asp-for="@Model.MaxPrice">
+
+                            </div>
                         </div>
-                    </div>
-                    <button class="axil-btn btn-bg-primary">All Reset</button>
+                        <div class="d-flex gap-3" style="height:40px">
+                            <button style="width:40%" class="btn btn-bg btn-primary">Search</button>
+                            <button id="resetfilter" style="width:40%" type="reset" class="btn btn-bg btn-primary">All Reset</button>
+                        </div>
+                    </form>
                 </div>
                 <!-- End .axil-shop-sidebar -->
             </div>
             <div class="col-lg-9">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="axil-shop-top mb--40">
-                            <div class="category-select align-items-center justify-content-lg-end justify-content-between">
-                                <!-- Start Single Select  -->
-                                <span class="filter-results">Showing 1-12 of 84 results</span>
-                                <select class="single-select">
-                                    <option>Short by Latest</option>
-                                    <option>Short by Oldest</option>
-                                    <option>Short by Name</option>
-                                    <option>Short by Price</option>
-                                </select>
-                                <!-- End Single Select  -->
-                            </div>
-                            <div class="d-lg-none">
-                                <button class="product-filter-mobile filter-toggle"><i class="fas fa-filter"></i> FILTER</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row row--15">
                     @{
                         foreach (var product in Model.Products)
                         {
-                                <div class="col-xl-4 col-sm-6">
-                                    <div class="axil-product product-style-one mb--30">
-                                        <div class="thumbnail">
-                                            <a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">
-                                                <img style="height:400px;width:300px;object-fit:cover" src="~/assets/images/@product.MainPhoto">
-                                            </a>
-                                            <div class="product-hover-action">
-                                                <ul class="cart-action">
-                                                    <li class="wishlist"><a class="product-heart" data-id="@product.Id"><i class="far fa-heart "></i></a></li>
-                                                    <li class="select-option"><a class="add-basket-btn" data-id="@product.Id">Add to Cart</a></li>
-                                                    <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                                </ul>
-                                            </div>
+                            <div class="col-xl-4 col-sm-6">
+                                <div class="axil-product product-style-one mb--30">
+                                    <div class="thumbnail">
+                                        <a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">
+                                            <img style="height:400px;width:300px;object-fit:cover" src="~/assets/images/@product.MainPhoto">
+                                        </a>
+                                        <div class="product-hover-action">
+                                            <ul class="cart-action">
+                                                <li class="wishlist"><a class="product-heart" data-id="@product.Id"><i class="far fa-heart "></i></a></li>
+                                                <li class="select-option"><a class="add-basket-btn" data-id="@product.Id">Add to Cart</a></li>
+                                                <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <div class="product-content">
-                                            <div class="inner">
-                                                <h5 class="title"><a href="single-product.html">@product.Title</a></h5>
-                                                <div class="product-price-variant">
-                                                    <span class="price current-price">$@product.Price</span>
-                                                </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="inner">
+                                            <h5 class="title"><a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">@product.Title</a></h5>
+                                            <div class="product-price-variant">
+                                                <span class="price current-price">$@product.Price</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         }
                     }
 
+                    <div class="d-flex align-items-center justify-content-center pt--20">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                @{
+                                    var prevPage = Model.Page - 1;
+                                    @if (1 < Model.Page)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" asp-action="index" asp-route-checkColor="@checkColor" asp-route-brendCheck="@brendCheck" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice" asp-route-genderCheck="@gender" asp-controller="shop" asp-route-page="@prevPage" data-page="@prevPage" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+
+                                    }
+                                    @for (int i = 1; i <= Model.PageCount; i++)
+                                    {
+                                        <li class="page-item"><a class="page-link" asp-action="index" asp-route-checkColor="@checkColor" asp-route-brendCheck="@brendCheck" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice" asp-route-genderCheck="@gender" asp-controller="shop" asp-route-page="@i" class="@(i==Model.Page?"page-num changepage  active":"changepage  page-num")" data-page="@i">@i</a></li>
+                                    }
+
+                                    var nextPage = Model.Page + 1;
+                                    @if (Model.Page != Model.PageCount)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" asp-action="index" asp-route-checkColor="@checkColor" asp-route-brendCheck="@brendCheck" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice" asp-route-genderCheck="@gender" asp-controller="shop" asp-route-page="@nextPage" data-page="@nextPage" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    }
+
+                                }
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
-                <div class="text-center pt--20">
-                    <a href="#" class="axil-btn btn-bg-lighter btn-load-more">Load more</a>
-                </div>
+
+
             </div>
         </div>
     </div>

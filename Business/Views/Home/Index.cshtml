@@ -11,17 +11,17 @@
                             @{
                                 foreach (var slider in Model.HomeMainSliders)
                                 {
-                                        <div class="single-slide slick-slide">
-                                            <div class="main-slider-content">
+                                    <div class="single-slide slick-slide">
+                                        <div class="main-slider-content">
                                             <h1 class="title">@slider.Title</h1>
-                                                <div class="shop-btn">
-                                                    <a href="shop.html" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="main-slider-thumb">
-                                                <img style="border-radius:10px 0" src="~/assets/images/@slider.PhotoName" alt="Product">
+                                            <div class="shop-btn">
+                                                <a href="shop.html" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a>
                                             </div>
                                         </div>
+                                        <div class="main-slider-thumb">
+                                            <img style="border-radius:10px 0" src="~/assets/images/@slider.PhotoName" alt="Product">
+                                        </div>
+                                    </div>
                                 }
                             }
 
@@ -48,30 +48,30 @@
                 @{
                     foreach (var product in Model.Products)
                     {
-                            <div class="slick-single-layout">
-                                <div class="axil-product product-style-four">
-                                    <div class="thumbnail">
-                                        <a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">
-                                            <img style="width:300px;height:400px;object-fit:cover" data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="~/assets/images/@product.MainPhoto" alt="Product Images">
-                                        </a>
-                                        <div class="product-hover-action">
-                                            <ul class="cart-action">
-                                                <li class="wishlist"><a><i data-id="@product.Id" class="far fa-heart product-heart"></i></a></li>
-                                                <li class="select-option"><a class="add-basket-btn" data-id="@product.Id">Add to Cart</a></li>
-                                                <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                            </ul>
-                                        </div>
+                        <div class="slick-single-layout">
+                            <div class="axil-product product-style-four">
+                                <div class="thumbnail">
+                                    <a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">
+                                        <img style="width:300px;height:400px;object-fit:cover" data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="~/assets/images/@product.MainPhoto" alt="Product Images">
+                                    </a>
+                                    <div class="product-hover-action">
+                                        <ul class="cart-action">
+                                            <li class="wishlist"><a><i data-id="@product.Id" class="far fa-heart product-heart"></i></a></li>
+                                            <li class="select-option"><a class="add-basket-btn" data-id="@product.Id">Add to Cart</a></li>
+                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
+                                        </ul>
                                     </div>
-                                    <div class="product-content">
-                                        <div class="inner">
-                                            <h5 class="title"><a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">@product.Title</a></h5>
-                                            <div class="product-price-variant">
-                                                <span class="price current-price">$@product.Price</span>
-                                            </div>
+                                </div>
+                                <div class="product-content">
+                                    <div class="inner">
+                                        <h5 class="title"><a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">@product.Title</a></h5>
+                                        <div class="product-price-variant">
+                                            <span class="price current-price">$@product.Price</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     }
                 }
 
@@ -91,38 +91,38 @@
             @{
                 foreach (var bestSelling in Model.BestSellingProducts)
                 {
-                        <div class="slick-single-layout">
-                            <div class="axil-product product-style-seven">
-                                <div class="product-content">
-                                    <div class="cart-btn add-basket-btn" data-id="@bestSelling.Id">
-                                        <a>
-                                            <i class="flaticon-shopping-cart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">Full Sleev Tshirt</a></h5>
-                                        <div class="product-price-variant">
-                                            <span class="price current-price">$@bestSelling.Price</span>
-                                        </div>
-                                        <div class="product-rating">
-                                            <span class="icon">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </span>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="thumbnail">
-                                    <a asp-action="details" asp-controller="shop" asp-route-id="@bestSelling.Id">
-                                        <img style="width:300px;height:400px;object-fit:cover" data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy" src="~/assets/images/@bestSelling.MainPhoto" alt="Product Images">
+                    <div class="slick-single-layout">
+                        <div class="axil-product product-style-seven">
+                            <div class="product-content">
+                                <div class="cart-btn add-basket-btn" data-id="@bestSelling.Id">
+                                    <a>
+                                        <i class="flaticon-shopping-cart"></i>
                                     </a>
                                 </div>
+                                <div class="inner">
+                                    <h5 class="title"><a asp-action="details" asp-controller="shop" asp-route-id="@bestSelling.Id">@bestSelling.Title</a></h5>
+                                    <div class="product-price-variant">
+                                        <span class="price current-price">$@bestSelling.Price</span>
+                                    </div>
+                                    <div class="product-rating">
+                                        <span class="icon">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="thumbnail">
+                                <a asp-action="details" asp-controller="shop" asp-route-id="@bestSelling.Id">
+                                    <img style="width:300px;height:400px;object-fit:cover" data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy" src="~/assets/images/@bestSelling.MainPhoto" alt="Product Images">
+                                </a>
                             </div>
                         </div>
+                    </div>
                 }
             }
 
@@ -165,38 +165,35 @@
         <div class="explore-product-activation slick-layout-wrapper slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide">
             <div class="slick-single-layout">
                 <div class="row row--15" id="our-products">
-
                     @{
-                        foreach (var product in Model.Products)
+                        foreach (var product in Model.ExploreProducts)
                         {
-                                <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
-                                    <div class="axil-product product-style-one">
-                                        <div class="thumbnail">
-                                            <a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">
-                                                <img style="width:300px;height:400px;object-fit:cover" src="/assets/images/@product.MainPhoto" alt="Product Images">
-                                            </a>
-                                            <div class="product-hover-action">
-                                                <ul class="cart-action">
-                                                    <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                                    <li class="select-option"><a class="add-basket-btn" data-id="@product.Id">Add to Cart</a></li>
-                                                    <li class="wishlist product-heart" data-id="@product.Id"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                                </ul>
-                                            </div>
+                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
+                                <div class="axil-product product-style-one">
+                                    <div class="thumbnail">
+                                        <a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">
+                                            <img style="width:300px;height:400px;object-fit:cover" src="/assets/images/@product.MainPhoto" alt="Product Images">
+                                        </a>
+                                        <div class="product-hover-action">
+                                            <ul class="cart-action">
+                                                <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
+                                                <li class="select-option"><a class="add-basket-btn" data-id="@product.Id">Add to Cart</a></li>
+                                                <li class="wishlist product-heart" data-id="@product.Id"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <div class="product-content">
-                                            <div class="inner">
-                                                <h5 class="title"><a href="single-product.html">@product.Title</a></h5>
-                                                <div class="product-price-variant">
-                                                    <span class="price current-price">$@product.Price</span>
-                                                </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="inner">
+                                            <h5 class="title"><a href="single-product.html">@product.Title</a></h5>
+                                            <div class="product-price-variant">
+                                                <span class="price current-price">$@product.Price</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         }
                     }
-
-
                 </div>
             </div>
             <!-- End .slick-single-layout -->
@@ -222,20 +219,20 @@
             @{
                 foreach (var testimonial in Model.Testimonials)
                 {
-                        <div class="slick-single-layout testimonial-style-one">
-                            <div class="review-speech">
-                                @Html.Raw(testimonial.Description)
-                            </div>
-                            <div class="media">
-                                <div class="thumbnail">
-                                    <img style="border-radius: 50%;width: 103px;height: 103px;object-fit: cover;" src="~/assets/images/@testimonial.PhotoName">
-                                </div>
-                                <div class="media-body">
-                                    <h6 class="title">@testimonial.Title</h6>
-                                </div>
-                            </div>
-                            <!-- End .thumbnail -->
+                    <div class="slick-single-layout testimonial-style-one">
+                        <div class="review-speech">
+                            @Html.Raw(testimonial.Description)
                         </div>
+                        <div class="media">
+                            <div class="thumbnail">
+                                <img style="border-radius: 50%;width: 103px;height: 103px;object-fit: cover;" src="~/assets/images/@testimonial.PhotoName">
+                            </div>
+                            <div class="media-body">
+                                <h6 class="title">@testimonial.Title</h6>
+                            </div>
+                        </div>
+                        <!-- End .thumbnail -->
+                    </div>
                 }
             }
         </div>
@@ -253,30 +250,30 @@
             @{
                 foreach (var product in Model.Products)
                 {
-                        <div class="slick-single-layout">
-                            <div class="axil-product product-style-two has-color-pick">
-                                <div class="thumbnail">
-                                    <a href="single-product.html">
-                                        <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="~/assets/images/@product.MainPhoto" alt="Product Images">
-                                    </a>
+                    <div class="slick-single-layout">
+                        <div class="axil-product product-style-two has-color-pick">
+                            <div class="thumbnail">
+                                <a href="single-product.html">
+                                    <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="~/assets/images/@product.MainPhoto" alt="Product Images">
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <div class="inner">
+                                    <h5 class="title"><a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">@product.Title</a></h5>
+                                    <div class="product-price-variant">
+                                        <span class="price current-price">$@product.Price</span>
+                                    </div>
                                 </div>
-                                <div class="product-content">
-                                    <div class="inner">
-                                        <h5 class="title"><a asp-action="details" asp-controller="shop" asp-route-id="@product.Id">@product.Title</a></h5>
-                                        <div class="product-price-variant">
-                                            <span class="price current-price">$@product.Price</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-hover-action">
-                                        <ul class="cart-action justify-content-center">
-                                            <li class="wishlist"><a class="product-heart" data-id="@product.Id"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a class="add-basket-btn" data-id="@product.Id">Add to Cart</a></li>
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                        </ul>
-                                    </div>
+                                <div class="product-hover-action">
+                                    <ul class="cart-action justify-content-center">
+                                        <li class="wishlist"><a class="product-heart" data-id="@product.Id"><i class="far fa-heart"></i></a></li>
+                                        <li class="select-option"><a class="add-basket-btn" data-id="@product.Id">Add to Cart</a></li>
+                                        <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 }
             }
 

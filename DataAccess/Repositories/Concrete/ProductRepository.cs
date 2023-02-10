@@ -25,12 +25,12 @@ namespace DataAccess.Repositories.Concrete
             var products = await _context.Products
               .Where(pr => pr.BestSelling == true)
               .OrderByDescending(pr => pr.CreatedAt)
-              .Take(5)
+              .Take(4)
               .ToListAsync();
             return products;
         }
 
-      
+
 
         public async Task<List<Product>> GetAllWithBrandAsync()
         {
@@ -75,7 +75,7 @@ namespace DataAccess.Repositories.Concrete
                 .Where(pr => !string.IsNullOrEmpty(name) ? pr.Title.ToLower().Contains(name.ToLower()) : true);
         }
 
-     
+
         public async Task<Product> GetUpdateModelAsync(int id)
         {
             var product = await _context.Products
@@ -92,8 +92,8 @@ namespace DataAccess.Repositories.Concrete
             var products = await _context.Products
                 .OrderByDescending(p => p.CreatedAt)
                 .Include(pr => pr.Brand)
-                .Skip(5)
-                .Take(5)
+                .Skip(4 * skipRow)
+                .Take(4)
                 .ToListAsync();
 
             return products;
@@ -102,7 +102,7 @@ namespace DataAccess.Repositories.Concrete
 
         public async Task<bool> CheckIsLastAsync(int skipRow)
         {
-            if (((skipRow + 1) * 6) + 1 >= _context.Products.Where(pr => pr.BestSelling).Count())
+            if (((skipRow + 1) * 4) + 1 >= _context.Products.Where(pr => pr.BestSelling).Count())
             {
                 return true;
             }
@@ -119,7 +119,7 @@ namespace DataAccess.Repositories.Concrete
             return products;
         }
 
-      
+
 
         public async Task<IQueryable<Product>> FilterByPrice(IQueryable<Product> products, double? minPrice, double? maxPrice)
         {
@@ -146,5 +146,14 @@ namespace DataAccess.Repositories.Concrete
             return products;
         }
 
+        public async Task<List<Product>> GetProductsExploreSellingAsync()
+        {
+            var products = await _context.Products
+             .Where(pr => pr.BestSelling == true)
+             .OrderByDescending(pr => pr.CreatedAt)
+             .Take(4)
+             .ToListAsync();
+            return products;
+        }
     }
 }

@@ -1,0 +1,74 @@
+﻿@using Business.Areas.Admin.ViewModels.Contact;
+@model ContactCreateVM;
+
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h1>Contact </h1>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <form asp-action="create" asp-controller="contact" method="post">
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align" asp-for="@Model.PhoneNumber"></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" asp-for="@Model.PhoneNumber" />
+                                    <span class="d-block text-danger" asp-validation-for="@Model.PhoneNumber"></span>
+                                </div>
+                            </div>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align" asp-for="@Model.Address"></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" asp-for="@Model.Address" />
+                                    <span class="d-block text-danger" asp-validation-for="@Model.Address"></span>
+                                </div>
+                            </div>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align" asp-for="@Model.EmailAddress"></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" asp-for="@Model.EmailAddress" />
+                                    <span class="d-block text-danger" asp-validation-for="@Model.EmailAddress"></span>
+                                </div>
+                            </div>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align" asp-for="@Model.Careers"></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" asp-for="@Model.Careers" />
+                                    <span class="d-block text-danger" asp-validation-for="@Model.Careers"></span>
+                                </div>
+                            </div>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align" asp-for="@Model.MondayToSaturday"></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" asp-for="@Model.MondayToSaturday" />
+                                    <span class="d-block text-danger" asp-validation-for="@Model.MondayToSaturday"></span>
+                                </div>
+                            </div>
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align" asp-for="@Model.Sundays"></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" asp-for="@Model.Sundays" />
+                                    <span class="d-block text-danger" asp-validation-for="@Model.Sundays"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="ln_solid">
+                                <div class="form-group">
+                                    <div class="col-md-6 offset-md-3 mt-2">
+                                        <button type='submit' class="btn btn-primary">Submit</button>
+                                        <a type="button" asp-action="index" asp-controller="contact" class="btn btn-success">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
